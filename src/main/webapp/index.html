@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Library</title>
+<script src="angular.js"></script>
+<script src="angular-aria.js"></script>
+<script src="angular-animate.js"></script>
+<script src="angular-messages.js"></script>
+<script src="angular-material.js"></script>
+<script src="angular-material.min.js"></script>
+<script src="Library.js"></script>
+<link rel="stylesheet" href="Library.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="angular-material.css">
+
+</head>
+
+<body>
+	<div ng-app="LibraryApp" ng-controller="AppCtrl" ng-cloak
+		ng-init="list=[] ;list2=[];editissuedate=true;editreturndate=true">
+		<div id="welcome">
+			<ul>
+				<a href="#"><li style="display: block; float: left; width: 3%;"><i
+						class="fas fa-home"
+						style="font-size: 2.5em; margin-top: 0.25em; color: #2b8ad0"></i></li></a>
+				<li style="display: block; float: left; width: 97%;"><h2>
+						<i class="fa fa-book"></i> Welcome to the Library <i
+							class="fa fa-book"></i>
+					</h2></li>
+			</ul>
+		</div>
+		<hr>
+
+
+		<md-content class="md-padding"> <md-nav-bar
+			md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem"
+			nav-bar-aria-label="navigation links"> <md-nav-item
+			md-nav-click="gotobookstab()" name="Books"> Books </md-nav-item> <md-nav-item
+			md-nav-click="gotolibraryhistorytab()" name="Library History">
+		Library History </md-nav-item> </md-nav-bar>
+		<div ng-show="defaultcontent" class="ext-content">
+			<ul style="list-style-type: none">
+				<li>This is a Library Application with CRUD operations along
+					with the options to lend and return a book.</li>
+				<br>
+				<li>Click the 'Book' tab above <i class="fas fa-hand-point-up"></i>
+					for Adding Books,Viewing all books in the library or finding the
+					books available or deleting them.
+				</li>
+				<br>
+				<li>Or you can click the 'Library History' <i
+					class="fas fa-hand-point-up"></i> tab to view all books currently
+					issued or issue history.
+				</li>
+			</ul>
+		</div>
+		<div ng-show="bookstabcontent" class="ext-content">
+
+			<table style="margin-right: 0px; margin-left: auto;">
+				<tr>
+					<td align="right">Search :</td>
+					<td><input class="searchinput" ng-model="query[queryBy]" /></td>
+				</tr>
+				<tr>
+					<td align="right">Search By :</td>
+					<td><select ng-model="queryBy">
+							<option value="$"></option>
+							<option value="id">BookId</option>
+							<option value="title">Name</option>
+							<option value="author">Author</option>
+					</select></td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<th>BookID</th>
+					<th>Book Name</th>
+					<th>Author Name</th>
+					<th>Book Price</th>
+					<th>Quantity</th>
+				</tr>
+				<tr ng-repeat="books in list  | filter:query track by $index">
+					<td>
+						<p id="books.id" >{{books.id}}</p> <!-- <span
+						ng-if="editid"><input ng-model="books.id" type="number"
+							required> </span> -->
+					</td>
+					<td>
+						<p id="books.title" ng-if="!editname">{{books.title}}</p> <span
+						ng-if="editname"><input ng-model="books.title" required></span>
+					</td>
+					<td>
+						<p id="books.author" ng-if="!editauthor">{{books.author}}</p> <span
+						ng-if="editauthor"><input ng-model="books.author" required></span>
+					</td>
+					<td>
+						<p id="books.price" ng-if="!editprice">{{books.price}}</p> <span
+						ng-if="editprice"><input ng-model="books.price"
+							type="number" required></span>
+					</td>
+					<td>
+						<p id="books.quantity" ng-if="!editquantity">{{books.quantity}}</p>
+						<span ng-if="editquantity"><input ng-model="books.quantity"
+							type="number" required></span>
+					</td>
+					<td><button class="button button1"
+							ng-click="updatebook($index);editid=!editid;editname=!editname;editauthor=!editauthor;editprice=!editprice;editquantity=!editquantity">Update
+							Book</button></td>
+					<td><button class="button button1"
+							ng-click="showConfirm($event,$index)">Delete Book</button></td>
+					<td><button class="button button1"
+							ng-disabled="!(books.quantity>0)"
+							ng-click="showPrompt($event,$index)">Issue Book</button></td>
+				</tr>
+				<tr>
+					<td><input type="number" ng-model="id"
+						ng-focus="enablebutton()" ng-blur="enablebutton()"
+						placeholder="Enter BookID" /></td>
+					<td><input type="text" ng-model="title"
+						ng-focus="enablebutton()" ng-blur="enablebutton()"
+						placeholder="Enter Book Name" /></td>
+					<td><input type="text" ng-model="author"
+						ng-focus="enablebutton()" ng-blur="enablebutton()"
+						placeholder="Enter Author Name" /></td>
+					<td><input type="number" ng-model="price"
+						ng-focus="enablebutton()" ng-blur="enablebutton()"
+						placeholder="Enter Price" /></td>
+					<td><input type="number" ng-model="quantity"
+						ng-focus="enablebutton()" ng-blur="enablebutton()"
+						placeholder="Enter Quantity" /></td>
+					<td><button class="button button1" ng-click="addbook($event,$index)"
+							ng-disabled="!enable">Add Book</button></td>
+				</tr>
+			</table>
+		</div>
+
+		<div ng-show="libraryhistorytab" class="ext-content">
+			<table class="c">
+				<tr>
+					<th>BookID</th>
+					<th>CustomerID</th>
+					<th>Book Name</th>
+					<th>Author Name</th>
+					<th>Book Price</th>
+					<th>Issue Date</th>
+					<th>Return Date</th>
+				</tr>
+				<tr ng-repeat="books in list2 track by $index" style="height: 30px;">
+					<td>
+						<p id="books.bookid" ng-if="!editid">{{books.bookid}}</p>
+					</td>
+					<td>
+						<p id="books.custid" ng-if="!editcustid">{{books.custid}}</p>
+					</td>
+					<td>
+						<p id="books.title" ng-if="!editname">{{books.title}}</p>
+					</td>
+					<td>
+						<p id="books.author" ng-if="!editauthor">{{books.author}}</p>
+					</td>
+					<td>
+						<p id="books.price" ng-if="!editprice">{{books.price}}</p>
+					</td>
+					<td>
+						<p style="align: center" id="books.issue_date"
+							ng-if="(books.issue_date!=null)">{{books.issue_date | date:'medium'}}</p>
+					</td>
+					<td>
+						<p style="align: center" id="books.return_date"
+							ng-if="(books.return_date!=null)">{{books.return_date | date:'medium' }}</p>
+					</td>
+
+					<td><button class="button button1" ng-if="!(books.return_date!=null)"
+							ng-click="returnbook($event,$index)">Return Book</button></td>
+
+				</tr>
+			</table>
+
+		</div>
+		</md-content>
+	</div>
+
+</body>
+</html>

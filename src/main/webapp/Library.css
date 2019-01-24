@@ -1,0 +1,125 @@
+@charset "ISO-8859-1";
+
+table.c {
+	table-layout: fixed;
+	width: 100%;
+}
+
+md-content .ext-content {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 15px;
+	margin-left: 10px;
+	width: 98%;
+	font-size: medium;
+	background-color: #fff2e066;
+}
+
+button:disabled, button1:disabled, button1[disabled], button[disabled],
+	button[disabled]:hover, button1[disabled]:hover {
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
+}
+
+searchinput {
+	outline: none;
+}
+
+td {
+	align: center;
+}
+
+p {
+	width: 100%;
+	text-align: center;
+}
+
+input, textarea {
+	-webkit-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-shadow: 0 0 5px rgb(255, 87, 34);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgb(255, 87, 34);
+}
+
+input:focus, textarea:focus {
+	box-shadow: 0 0 5px #2b8ad0;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #2b8ad0;
+}
+
+h2 {
+	text-align: center;
+	color: #2b8ad0;
+	font-family: "Arial", Sans-serif;
+	text-shadow: 0.1px 0.1px #2b8ad0;
+}
+
+::-webkit-input-placeholder {
+	text-align: center;
+	font-size: small;
+}
+
+.button2 {
+	background-color: white;
+	width: 70%;
+	color: black;
+	padding: 8px 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border: 1px solid #2b8ad0;
+	margin-left: 10px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button {
+	background-color: white;
+	width: 90%;
+	color: black;
+	padding: 8px 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border: 1px solid #2b8ad0;
+	margin-left: 10px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button1:hover {
+	background-color: #2b8ad0;
+	color: white;
+}
+
+hr {
+	color: red;
+	height: 1.5pt;
+	background-color: #2b8ad0;
+	border: none;
+}
+
+body {
+	font-family: "-webkit-body";
+	font-size: 12pt;
+	padding-right: 10px;
+	height: 300pt;
+}
+
+.md-button.md-default-theme.md-accent, .md-button.md-accent, .md-button._md-nav-button,
+	.md-button.md-active, .md-button, .md-button._md-nav-button, .md-button.md-ink-ripple
+	{
+	color: #2b8ad0;
+}
+
+md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
+	background-color: #2b8ad0;
+}
