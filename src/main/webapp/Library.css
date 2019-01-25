@@ -38,10 +38,10 @@ p {
 input, textarea {
 	-webkit-transition: all 0.30s ease-in-out;
 	outline: none;
-	box-shadow: 0 0 5px rgb(255, 87, 34);
+	box-shadow: 0 0 5px #2b8ad0;
 	padding: 3px 0px 3px 3px;
 	margin: 5px 1px 3px 0px;
-	border: 1px solid rgb(255, 87, 34);
+	border: 1px solid #2b8ad0;  
 }
 
 input:focus, textarea:focus {

@@ -121,19 +121,19 @@
 							ng-click="showPrompt($event,$index)">Issue Book</button></td>
 				</tr>
 				<tr>
-					<td><input type="number" ng-model="id"
+					<td><input type="number" ng-model="id" id="id"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter BookID" /></td>
-					<td><input type="text" ng-model="title"
+					<td><input type="text" ng-model="title" id="title"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Book Name" /></td>
-					<td><input type="text" ng-model="author"
+					<td><input type="text" ng-model="author" id="author"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Author Name" /></td>
-					<td><input type="number" ng-model="price"
+					<td><input type="number" ng-model="price" id="price"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Price" /></td>
-					<td><input type="number" ng-model="quantity"
+					<td><input type="number" ng-model="quantity" id="quantity"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Quantity" /></td>
 					<td><button class="button button1" ng-click="addbook($event,$index)"
@@ -171,11 +171,11 @@
 					</td>
 					<td>
 						<p style="align: center" id="books.issue_date"
-							ng-if="(books.issue_date!=null)">{{books.issue_date | date:'medium'}}</p>
+							ng-if="(books.issue_date!=null)">{{books.issue_date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
 					</td>
 					<td>
 						<p style="align: center" id="books.return_date"
-							ng-if="(books.return_date!=null)">{{books.return_date | date:'medium' }}</p>
+							ng-if="(books.return_date!=null)">{{books.return_date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
 					</td>
 
 					<td><button class="button button1" ng-if="!(books.return_date!=null)"
