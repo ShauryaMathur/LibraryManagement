@@ -35,11 +35,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>8.0.13</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -47,11 +42,11 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
-			<!-- use the following artifactId if you don't need servlet 2.x compatibility -->
-			<!-- artifactId>jersey-container-servlet</artifactId -->
 		</dependency>
-		<!-- uncomment this to get JSON support --> <dependency> <groupId>org.glassfish.jersey.media</groupId> 
-			<artifactId>jersey-media-moxy</artifactId> </dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>LibraryHibernate2</groupId>
 			<artifactId>LibraryHibernate2</artifactId>
