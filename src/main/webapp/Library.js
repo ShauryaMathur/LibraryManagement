@@ -285,6 +285,7 @@ app
 						}
 					}
 				}
+<<<<<<< HEAD
 
 				$book.gotolibraryhistorytab = function() {
 					$book.defaultcontent = false;
@@ -324,6 +325,44 @@ app
 					}
 				}
 
+=======
+
+				$book.gotolibraryhistorytab = function() {
+					$book.defaultcontent = false;
+					$book.bookstabcontent = false;
+					$book.libraryhistorytab = true;
+				}
+
+				// Update Function
+				$book.updatebook = function(index) {
+
+					var req = {
+							url : "webapi/myresource/update/"
+								+ $book.list[index].id + "/"
+								+ $book.list[index].title + "/"
+								+ $book.list[index].author + "/"
+								+ $book.list[index].price + "/"
+								+ $book.list[index].quantity,
+								method : "PUT"
+					};
+					if (($book.list[index].title != null)
+							&& ($book.list[index].title != '')
+							&& ($book.list[index].author != null)
+							&& ($book.list[index].author != '')) {
+						$http(req)
+						.then(
+								function(response) {
+									$window
+									.alert("Update Successful! :)");
+								},
+								function(response) {
+									$window
+									.alert("Sorry :(/nCouldn't Update!");
+								});
+					}
+				}
+
+>>>>>>> de7c514aaadc2ea8fa2e83aa9a4714d49372acb0
 				// Issue Book Function
 				$book.showPrompt = function(ev, index) {
 
