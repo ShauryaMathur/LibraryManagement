@@ -311,8 +311,11 @@ app
 						$http(req)
 						.then(
 								function(response) {
-									$window
-									.alert("Update Successful! :)");
+									if($book.updateflag==false)
+										$('.alert').alert()
+									//$window.alert("Update Successful! :)");
+									
+									$book.updateflag=false;
 								},
 								function(response) {
 									$window

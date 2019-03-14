@@ -1300,8 +1300,10 @@ md-checkbox {
     border: none; } }
 
 md-content {
-  display: block;
+  /*display: block;*/
   position: relative;
+  margin:20px;
+  background-color:rgb(255, 255, 255);
   overflow: auto;
   -webkit-overflow-scrolling: touch; }
   md-content[md-scroll-y] {

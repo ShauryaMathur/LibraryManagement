@@ -11,7 +11,12 @@
 <script src="angular-material.js"></script>
 <script src="angular-material.min.js"></script>
 <script src="Library.js"></script>
-<link rel="stylesheet" href="Library.css">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous"> -->
+<!-- <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine"> -->
+          
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="Library.css"> -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
@@ -19,18 +24,42 @@
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="angular-material.css">
+<style>
+.btn-primary {
+	font-size: 12px;
+	height: inherit;
+}
+
+th {
+    text-align: inherit;
+    width: 450px;}
+    
+    tr{ height:2em;}
+
+.form-control{
+height:1.5em;}
+.md-button.md-default-theme.md-accent, .md-button.md-accent, .md-button._md-nav-button,
+	.md-button.md-active, .md-button, .md-button._md-nav-button, .md-button.md-ink-ripple
+	{
+	color: rgb(0, 123, 255);
+}
+
+ink-bar, md-nav-bar md-nav-ink-bar {
+    color: rgb(0, 123, 255);
+    background: rgb(0, 123, 255);
+</style>
 
 </head>
 
 <body>
 	<div ng-app="LibraryApp" ng-controller="AppCtrl" ng-cloak
-		ng-init="list=[] ;list2=[];editissuedate=true;editreturndate=true">
+		ng-init="list=[] ;list2=[];editissuedate=true;editreturndate=true;">
 		<div id="welcome">
 			<ul>
-				<a href="#"><li style="display: block; float: left; width: 3%;"><i
+				<!-- <a href="#"><li style="display: block; float: left; width: 3%;"><i
 						class="fas fa-home"
-						style="font-size: 2.5em; margin-top: 0.25em; color: #2b8ad0"></i></li></a>
-				<li style="display: block; float: left; width: 97%;"><h2>
+						style="font-size: 2.5em; margin-top: 0.25em; color: #2b8ad0"></i></li></a> -->
+				<li style="display: block; float: left; width: 97%;"><h2 style="margin-top:1em;text-align:center;color: #2b8ad0;">
 						<i class="fa fa-book"></i> Welcome to the Library <i
 							class="fa fa-book"></i>
 					</h2></li>
@@ -39,13 +68,13 @@
 		<hr>
 
 
-		<md-content class="md-padding"> <md-nav-bar
+		<md-content class="md-padding"> <md-nav-bar 
 			md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem"
 			nav-bar-aria-label="navigation links"> <md-nav-item
 			md-nav-click="gotobookstab()" name="Books"> Books </md-nav-item> <md-nav-item
 			md-nav-click="gotolibraryhistorytab()" name="Library History">
 		Library History </md-nav-item> </md-nav-bar>
-		<div ng-show="defaultcontent" class="ext-content">
+		<div ng-show="defaultcontent" class="ext-content" class="jumbotron">
 			<ul style="list-style-type: none">
 				<li>This is a Library Application with CRUD operations along
 					with the options to lend and return a book.</li>
@@ -61,16 +90,16 @@
 				</li>
 			</ul>
 		</div>
-		<div ng-show="bookstabcontent" class="ext-content">
+		<div ng-show="bookstabcontent" class="ext-content" style="margin-left:30px;margin-right:30px">
 
 			<table style="margin-right: 0px; margin-left: auto;">
 				<tr>
-					<td align="right">Search :</td>
-					<td><input class="searchinput" ng-model="query[queryBy]" /></td>
+					<td align="right">Search : </td>
+					<td><input class="searchinput form-control" ng-model="query[queryBy]" type="text"/></td>
 				</tr>
 				<tr>
-					<td align="right">Search By :</td>
-					<td><select ng-model="queryBy">
+					<td align="right" >Search By : </td>
+					<td><select ng-model="queryBy" class="dropdown-toggle form-control">
 							<option value="$"></option>
 							<option value="id">BookId</option>
 							<option value="title">Name</option>
@@ -111,38 +140,39 @@
 						<span ng-if="editquantity"><input ng-model="books.quantity"
 							type="number" required></span>
 					</td>
-					<td><button class="button button1"
-							ng-click="updatebook($index);editid=!editid;editname=!editname;editauthor=!editauthor;editprice=!editprice;editquantity=!editquantity">Update
+					<td><button type="button" class="btn btn-primary"
+							ng-click="updatebook($index);editname=!editname;editauthor=!editauthor;editprice=!editprice;editquantity=!editquantity;updateflag=true;">Update
 							Book</button></td>
-					<td><button class="button button1"
+					<td><button type="button" class="btn btn-primary"
 							ng-click="showConfirm($event,$index)">Delete Book</button></td>
-					<td><button class="button button1"
+					<td><button type="button" class="btn btn-primary"
 							ng-disabled="!(books.quantity>0)"
 							ng-click="showPrompt($event,$index)">Issue Book</button></td>
 				</tr>
 				<tr>
-					<td><input type="number" ng-model="id" id="id"
+					<td><input class="form-control" type="number" ng-model="id" id="id"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter BookID" /></td>
-					<td><input type="text" ng-model="title" id="title"
+					<td><input class="form-control" type="text" ng-model="title" id="title"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Book Name" /></td>
-					<td><input type="text" ng-model="author" id="author"
+					<td><input class="form-control" type="text" ng-model="author" id="author"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Author Name" /></td>
-					<td><input type="number" ng-model="price" id="price"
+					<td><input class="form-control" type="number" ng-model="price" id="price"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Price" /></td>
-					<td><input type="number" ng-model="quantity" id="quantity"
+					<td><input class="form-control" type="number" ng-model="quantity" id="quantity"
 						ng-focus="enablebutton()" ng-blur="enablebutton()"
 						placeholder="Enter Quantity" /></td>
-					<td><button class="button button1" ng-click="addbook($event,$index)"
+					<td><button class="btn btn-primary" ng-click="addbook($event,$index)"
 							ng-disabled="!enable">Add Book</button></td>
 				</tr>
 			</table>
 		</div>
 
-		<div ng-show="libraryhistorytab" class="ext-content">
+		<!-- <div class="alert alert-success" role="alert">Update Successful</div> -->
+		<div ng-show="libraryhistorytab" class="ext-content" style="margin-left:30px;margin-right:30px">
 			<table class="c">
 				<tr>
 					<th>BookID</th>
@@ -178,7 +208,7 @@
 							ng-if="(books.return_date!=null)">{{books.return_date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
 					</td>
 
-					<td><button class="button button1" ng-if="!(books.return_date!=null)"
+					<td><button class="btn btn-primary" ng-if="!(books.return_date!=null)"
 							ng-click="returnbook($event,$index)">Return Book</button></td>
 
 				</tr>
@@ -187,6 +217,10 @@
 		</div>
 		</md-content>
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>
