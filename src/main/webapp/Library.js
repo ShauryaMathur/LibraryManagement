@@ -285,7 +285,6 @@ app
 						}
 					}
 				}
-<<<<<<< HEAD
 
 				$book.gotolibraryhistorytab = function() {
 					$book.defaultcontent = false;
@@ -325,7 +324,6 @@ app
 					}
 				}
 
-=======
 
 				$book.gotolibraryhistorytab = function() {
 					$book.defaultcontent = false;
@@ -362,7 +360,6 @@ app
 					}
 				}
 
->>>>>>> de7c514aaadc2ea8fa2e83aa9a4714d49372acb0
 				// Issue Book Function
 				$book.showPrompt = function(ev, index) {
 
